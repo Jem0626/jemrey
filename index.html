@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Monthsary</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <body class="dark">
+
+    
+
+<!-- FLOATING HEARTS -->
+<div id="hearts-container"></div>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="heart">❤️</div>
+  <h1 class="typewriter">Happy Monthsary, My Love</h1>
+  <div class="monthsary-number">23</div>
+  <p style="font-size:18px;">Another beautiful month with you 💕</p>
+  <button onclick="showPage('surprise')">Open Your Surprises →</button>
+</div>
+
+<!-- SURPRISE PAGE -->
+<div id="surprise" class="page">
+  <div class="box-container">
+    <div class="gift-box" id="giftBox">
+      <div class="lid"></div>
+      <div class="box-body"></div>
+      <div class="ribbon-horizontal"></div>
+      <div class="ribbon-vertical"></div>
+      <div class="ribbon-bow"></div>
+    </div>
+    <div class="balloons" id="balloonsContainer"></div>
+    <div id="confettiContainer"></div>
+  </div>
+  <div class="surprise-content" id="surpriseContent">
+      <h2>Happy Monthsary, My Love ❤️</h2>
+      <p>You mean the world to me.</p>
+  </div>
+  <button onclick="showPage('message')">Next →</button>
+</div>
+
+<!-- MESSAGE PAGE -->
+<div id="message" class="page">
+  <div id="roses-container"></div>
+  <h2 class="typewriter">A Message From My Heart ❤️</h2>
+  <div class="scroll-wrapper">
+    <div class="scroll-paper">
+      <p>Para sa'yo, Mahal Ko</p>
+      <p>Kahit na anong mangyari, mahal na mahal kita love/asawa. Mananatili ako sa piling mo kahit ano mangyari at kahit ano pang dumating na pagsubok sa ating dalawa, mananatili pa rin ako sa'yo. Kahit hindi kita maintindihan, kahit ano pa, mananatili ako sa tabi mo.</p>
+
+      <p>Alam kong hindi perpekto ang bawat araw natin. May mga sandaling nag-aaway tayo, may mga pagkakataong hindi tayo magkaintindihan. Pero sa kabila ng lahat ng 'yan, alam mo ba kung ano ang mas mahalaga? Yung kahit gaano tayo ka-complicated, kahit gaano pa kasalimuot ang sitwasyon, palagi tayong bumabalik sa isa't isa. Kasi yan ang ibig sabihin ng tunay na pagmamahal, hindi yung perpekto, kundi yung willing kang mag-stay kahit mahirap.</p>
+
+      <p>Sa mga susunod pang buwan, taon, at dekada ng buhay natin, alam mo ba kung ano ang pinapangarap ko? Simple lang. Ikaw at ako, magkasama pa rin. Tumanda man tayo, magbago man ang mundo, sana ikaw pa rin ang kasama ko. Kasi walang ibang taong gusto kong makasama kundi ikaw lang.</p>
+
+      <p>Mahal ko, sana alam mo kung gaano kaimportante ang presensya mo sa buhay ko. Hindi ka lang basta girlfriend o asawa ko, ikaw ang best friend ko, ang kasangga ko, ang taong pinagkakatiwalaan ko ng lahat. Ikaw ang safe space ko, yung lugar kung saan ako pwedeng maging totoo, maging vulnerable, maging ako lang without any pretensions.</p>
+
+      <p>Naalala mo pa ba yung mga unang araw natin? Yung mga kinakabahan akong moments, yung mga first dates, yung mga kilig na kilig moments? Hanggang ngayon, kahit ilang buwan na tayong magkasama, kinikilig pa rin ako sa'yo. Yung tawa mo, yung tingin mo, yung paraan mo ng pagsasalita, lahat ng 'yan, nagpapatibok pa rin ng puso ko.</p>
+
+      <p>At sa mga darating pang 23rd ng bawat buwan, sana lagi tayong ganito, masaya, in love, at committed sa isa't isa. Kahit mawala man yung spark, kilig, o ano pa, mananatili pa rin ako sayo dahil ikaw ang reason kung bakit ako nag mamahal ulit. Di ko na alam pa sasabihin ko asawa, pinipigilan ko tumulo mga luha ko habang ginagawa ko tong message sayo. Mahal na mahal kita asawa. Sana patuloy tayong magtulungan, mag-grow together, at maging better versions ng sarili natin para sa isa't isa.</p>
+
+      <p>Kaya mahal ko, thank you. Thank you for choosing me. Thank you for loving me. Thank you for staying. At higit sa lahat, thank you for being you, ang taong minamahal ko ng buong puso ko.</p>
+
+      <p>Mahal na mahal kita. Today, tomorrow, and every single day after that. Walang alinlangan. Walang duda. Ikaw lang, palagi. Ikaw ang pinili ko, at pipiliin ko ulit at ulit hanggang sa huli.</p>
+
+      <p>Happy Monthsary, my love. Here's to many more months, years, and a lifetime together. I love you more than words can ever express. 💕</p>
+
+      <p>Forever yours,<br>Your Love/Asawa</p>
+    </div>
+  </div>
+  <button onclick="showPage('photos')">Next →</button>
+</div>
+
+<!-- EXTRA FLOATING EMOJI EFFECT -->
+<script>
+function spawnFloatingEmoji() {
+  const emojis = ["💖","💗","💓","💞","💕","❤️","🌸","✨"];
+  const emoji = document.createElement("div");
+  emoji.classList.add("floating-extra-emoji");
+  emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  emoji.style.left = Math.random() * 100 + "vw";
+  emoji.style.top = "100vh";
+  document.body.appendChild(emoji);
+
+  setTimeout(() => emoji.remove(), 5000);
+}
+setInterval(spawnFloatingEmoji, 1200);
+</script>
+
+<!-- FLOATING CLOUDS -->
+<div class="cloud" style="top:10%; animation-delay:0s;"></div>
+<div class="cloud" style="top:30%; animation-delay:4s;"></div>
+<div class="cloud" style="top:55%; animation-delay:8s;"></div>
+<div class="cloud" style="top:75%; animation-delay:12s;"></div>
+
+<!-- EXTRA HEART PARTICLES -->
+<script>
+document.body.addEventListener("click", (e) => {
+  const heart = document.createElement("div");
+  heart.classList.add("click-heart");
+  heart.style.left = e.clientX + "px";
+  heart.style.top = e.clientY + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 900);
+});
+</script>
+
+<!-- PAGE FADE-IN TRANSITION -->
+<style>
+.page {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<!-- FLOWER PETALS -->
+<script>
+function createPetal() {
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.textContent = "🌸";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 8000);
+}
+setInterval(createPetal, 500);
+</script>
+
+<script>
+// HEART TRAIL
+document.addEventListener("mousemove", (e) => {
+  const heart = document.createElement("div");
+  heart.classList.add("cursor-heart");
+  heart.style.left = e.pageX + "px";
+  heart.style.top = e.pageY + "px";
+  heart.textContent = "💗";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 1000);
+});
+
+// GLITTER CURSOR
+document.addEventListener("mousemove", (e) => {
+  const sparkle = document.createElement("div");
+  sparkle.classList.add("glitter");
+  sparkle.style.left = e.pageX + "px";
+  sparkle.style.top = e.pageY + "px";
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 600);
+});
+</script>
+
+<script>
+document.addEventListener("click", (e) => {
+  const burst = document.createElement("div");
+  burst.classList.add("sparkle-burst");
+  burst.textContent = "✨";
+  burst.style.left = e.pageX + "px";
+  burst.style.top = e.pageY + "px";
+  document.body.appendChild(burst);
+  setTimeout(() => burst.remove(), 1200);
+});
+</script>
+
+<script>
+function launchFireworks() {
+  const surprise = document.getElementById("surprise");
+  if (!surprise.classList.contains("active")) return;
+
+  for (let i = 0; i < 25; i++) {
+    const fw = document.createElement("div");
+    fw.classList.add("firework");
+    fw.style.left = "50vw";
+    fw.style.top = "50vh";
+    fw.style.setProperty("--x", (Math.random() * 300 - 150) + "px");
+    fw.style.setProperty("--y", (Math.random() * 300 - 150) + "px");
+    document.body.appendChild(fw);
+    setTimeout(() => fw.remove(), 1000);
+  }
+}
+
+setInterval(launchFireworks, 2000);
+</script>
+
+
+
+<!-- OUR PHOTO PAGE -->
+<div id="photos" class="page">
+   <h2 class="typewriter" id="carouselHeading">Our Sweet Memories ❤️</h2>
+  <div class="photo-carousel">
+    <div id="photo-container">
+      <img src="images/LV1.jpg.jpg" alt="Our Photo">
+      <img src="images/LV2.jpg.jpg" alt="Our Photo">
+      <img src="images/LV3.jpg.jpg" alt="Our Photo">
+      <img src="images/LV4.jpg.jpg" alt="Our Photo">
+      <img src="images/LV5.jpg.jpg" alt="Our Photo">
+      <img src="images/LV6.jpg.jpg" alt="Our Photo">
+      <img src="images/LV7.jpg.jpg" alt="Our Photo">
+      <img src="images/LV8.jpg.jpg" alt="Our Photo">
+      <img src="images/LV9.jpg.jpg" alt="Our Photo">
+      <img src="images/LV10.jpg.jpg" alt="Our Photo">
+      <img src="images/LV11.jpg.jpg" alt="Our Photo">
+      
+    </div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="music/Runaway.mp3" type="audio/mpeg">
+</audio>
+
+<div id="musicBtn">🎵 Play Music</div>
+
+<script>
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+let musicStarted = false;
+
+// Function to start music
+function startMusic() {
+  if (!musicStarted) {
+    music.play().catch(() => {
+      console.log("Autoplay blocked, waiting for interaction...");
+    });
+    musicStarted = true;
+    musicBtn.textContent = "🎵 Pause Music";
+  }
+}
+
+// Listen for any click on the page to start music
+document.addEventListener('click', startMusic, { once: true });
+
+// Toggle play/pause when clicking the button
+musicBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // prevent triggering document click again
+  if (music.paused) {
+    music.play();
+    musicBtn.textContent = "🎵 Pause Music";
+  } else {
+    music.pause();
+    musicBtn.textContent = "🎵 Play Music";
+  }
+});
+</script>
+
+<!-- NEW BUTTON -->
+<button id="newPageBtn" onclick="showPage('newPage')">🌟 Surprise Extra →</button>
+
+<!-- NEW PAGE -->
+<div id="newPage" class="page" style="position:relative; overflow:hidden; background:black; color:white;">
+
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworksCanvas" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;"></canvas>
+ <!-- Dream Wedding Images -->
+  <div class="dream-wedding-images" style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin:20px 0; position:relative; z-index:2;">
+    <img src="images/churchwedding.jpg" alt="Church Wedding" style="width:200px; max-width:45%; border-radius:15px; box-shadow: 0 10px 25px rgba(255,0,120,0.25);">
+    <img src="images/beachwedding.jpg" alt="Beach Wedding" style="width:200px; max-width:45%; border-radius:15px; box-shadow: 0 10px 25px rgba(255,0,120,0.25);">
+  </div>
+
+ <!-- Dream Wedding Message in English inspired by Runaway -->
+  <div class="scroll-wrapper" style="max-width:800px; margin:0 auto;">
+    <div class="scroll-paper" style="padding:30px; font-size:18px; line-height:1.8;">
+      <p>My love, I’ve always dreamed of the day we would walk together into our forever. I can see it so clearly, our toes in the sand as the waves kiss the shore, the soft light of the church surrounding us as we promise each other a lifetime of love, and our family and friends celebrating with us at a beautiful venue filled with laughter, music, and joy.</p>
+
+      <p>Like the song I love, “Runaway,” every moment feels magical and timeless. I want to run away with you to a place where it’s just us, where every heartbeat is in sync, where every glance and every touch speaks louder than words. Our wedding is that escape, a world where love conquers all, where we are free to be ourselves and cherish every moment together.</p>
+
+      <p>the beach, bathed in golden sunlight, as we walk hand in hand. The church, sacred and serene, witnesses our vows and our promises. The venue, vibrant and warm, surrounded by smiles and happiness, reminds us of the journey that led us here. And the reception, where our hearts dance together with music, laughter, and memories that will last a lifetime.</p>
+
+      <p>This day isn’t just about the ceremony or the decorations. It’s about us, our story, and the love that carried us through every challenge. Like in “Runaway,” I want to escape with you into a world full of our dreams and promises. Every laugh, every tear of joy, and every embrace will be a reminder that this is where we belong, together, forever.</p>
+
+      <p>My love, on our dream wedding day, I promise to love you endlessly, to run toward every adventure with you, and to hold you close through every moment of life. This is our beginning, our celebration, and our forever. 💖</p>
+    </div>
+  </div>
+
+  <!-- Back Home Button -->
+  <button onclick="showPage('home')">← Back Home</button>
+</div>
+
+<!-- Fireworks Script -->
+<script>
+const canvas = document.getElementById('fireworksCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Firework {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height;
+    this.targetY = Math.random() * canvas.height / 2;
+    this.particles = [];
+    this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    this.exploded = false;
+  }
+  update() {
+    if (!this.exploded) {
+      this.y -= 5;
+      if (this.y <= this.targetY) this.explode();
+    }
+    this.particles.forEach(p => p.update());
+    this.particles = this.particles.filter(p => !p.done);
+  }
+  explode() {
+    this.exploded = true;
+    for (let i = 0; i < 50; i++) {
+      this.particles.push(new Particle(this.x, this.y, this.color));
+    }
+  }
+  draw() {
+    if (!this.exploded) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+    this.particles.forEach(p => p.draw());
+  }
+}
+
+class Particle {
+  constructor(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.vx = Math.random() * 6 - 3;
+    this.vy = Math.random() * -6 - 2;
+    this.alpha = 1;
+    this.color = color;
+    this.done = false;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy += 0.05;
+    this.alpha -= 0.02;
+    if (this.alpha <= 0) this.done = true;
+  }
+  draw() {
+    ctx.globalAlpha = this.alpha;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+}
+
+let fireworks = [];
+function animate() {
+  ctx.fillStyle = 'rgba(0,0,0,0.2)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  if (Math.random() < 0.05) fireworks.push(new Firework());
+  fireworks.forEach(f => { f.update(); f.draw(); });
+  fireworks = fireworks.filter(f => f.particles.length > 0 || !f.exploded);
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+<!-- ADD THIS BUTTON ANYWHERE YOU WANT (Example: after newPageBtn) -->
+<button id="timelineBtn" onclick="showPage('timeline')">💕 Our Timeline →</button>
+
+<!-- ✨ NEW PAGE: RELATIONSHIP TIMELINE -->
+<div id="timeline" class="page" style="padding:30px; text-align:center;">
+
+  <h2 class="typewriter">✨ Our Journey of Forever ✨</h2>
+
+  <div class="timeline-container">
+
+    <div class="timeline-card">
+      <h3>🌸 The First Spark</h3>
+      <p>The moment our paths crossed, the universe whispered, “This is where everything begins.</p>
+    </div>
+
+    <div class="timeline-card">
+      <h3>💗 The Blooming Days</h3>
+      <p>Every laugh, every late night talk, every little moment all stitched together to form the start of our beautiful story.</p>
+    </div>
+
+    <div class="timeline-card">
+      <h3>💖 Hand in Hand</h3>
+      <p>We grew, we stumbled, we learned, yet we always found our way back to each other, stronger than before.</p>
+    </div>
+
+    <div class="timeline-card">
+      <h3>💫 The Promise Ahead</h3>
+      <p>Our tomorrows shine brighter because we dream together a future filled with love, memories, and a forever that belongs only to us.</p>
+    </div>
+
+  </div>
+
+  <button onclick="showPage('home')" style="margin-top:25px;">← Back Home</button>
+</div>
+
+<style>
+/* TIMELINE PAGE MINIMALIST DESIGN */
+.timeline-container {
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeline-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  animation: fadeUp 0.7s ease both;
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 5px 15px rgba(255, 100, 150, 0.2);
+}
+
+.timeline-card h3 {
+  margin: 0 0 10px;
+  color: #ff9acb;
+  font-size: 22px;
+}
+
+.timeline-card p {
+  margin: 0;
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+</style>
+
+
+
+<style>
+@keyframes unroll {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+</style>
+
+<script src="script.js"></script>
+
+<script>
+  const photos = document.querySelectorAll('#photo-container img');
+
+  // Create overlay div
+  const overlay = document.createElement('div');
+  overlay.classList.add('photo-zoom-overlay');
+  const overlayImg = document.createElement('img');
+  overlay.appendChild(overlayImg);
+  document.body.appendChild(overlay);
+
+  // Click photo to zoom
+  photos.forEach(photo => {
+    photo.addEventListener('click', () => {
+      overlayImg.src = photo.src;
+      overlay.classList.add('active');
+    });
+  });
+
+  // Click overlay to close
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+</script>
+
+<script>
+  // Get all pages and buttons
+  const pages = document.querySelectorAll('.page');
+  
+  // Find all buttons inside pages
+  const buttons = document.querySelectorAll('.next-button');
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      // Hide current page
+      pages[index].classList.remove('active');
+
+      // Show next page if exists
+      if(pages[index + 1]) {
+        pages[index + 1].classList.add('active');
+      }
+    });
+  });
+</script>
+<!-- NEW BUTTON TO ACCESS DREAMS PAGE -->
+<button id="dreamsBtn" onclick="showPage('dreams')">🌈 Our Dreams →</button>
+
+<!-- ✨ NEW PAGE OUR DREAMS -->
+<div id="dreams" class="page" style="padding:40px; background:linear-gradient(135deg,#ff9acb,#da0d69); color:#5a2d82; text-align:center; overflow:hidden;">
+  
+  <h2 class="typewriter">🌟 Our Dreams Together 🌟</h2>
+
+  <div style="max-width:800px; margin:20px auto; font-size:18px; line-height:1.8; 
+              background:rgba(255,255,255,0.3); border-radius:15px; padding:25px; 
+              backdrop-filter:blur(8px); box-shadow:0 10px 25px rgba(255,0,120,0.2); 
+              text-align:justify;">
+    <p>My love, I dream of a life where we grow together every single day. A home filled with laughter, love, and memories that will last forever. 🌸</p>
+    <p>Traveling together, discovering new places, and making every moment count. 💕</p>
+    <p>Supporting each other’s passions, chasing goals hand in hand, and building a world that belongs to us. ✨</p>
+    <p>And in all of this, I hope our love continues to shine brighter than ever, through every challenge and joy that life brings. 💖</p>
+    <p>I dream of quiet mornings waking up beside you, feeling your warmth and knowing that no matter what happens, we face it together. 🌅</p>
+    <p>Of late night talks where we share our fears, our dreams, and even our silly little thoughts, knowing that you are my safe place, my home, my everything. 🕊️</p>
+    <p>I dream of holding your hand as we grow old, our hair turning gray, but our hearts forever young. I want to look into your eyes and see the same love we felt from day one, shining brighter with every year. 💑</p>
+    <p>Even when life gets hard, and the world feels heavy, I want you to know that I will always be your shoulder to lean on, your calm in the storm, and the person who never lets you feel alone. 🌈</p>
+    <p>All I want is to create memories that make us laugh until our stomachs hurt, love that makes us cry tears of joy, and moments so beautiful we will carry them in our hearts forever. 💕</p>
+    <p>My love, this dream isn’t just about a perfect life. It’s about **us**, being imperfectly perfect together, loving each other through mistakes, embracing every flaw, and building a forever that no one else could ever take from us. 💖</p>
+    <p>And if there’s one thing I want you to always remember, it’s this no matter what tomorrow brings, my heart has already chosen you. Today, tomorrow, and for every day after that, it will always be you. 🌸</p>
+  </div>
+
+  <!-- Floating Stars Animation -->
+  <script>
+    function spawnStar() {
+      const star = document.createElement('div');
+      star.textContent = '✨';
+      star.style.position = 'absolute';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.fontSize = (10 + Math.random() * 20) + 'px';
+      star.style.opacity = Math.random();
+      star.style.pointerEvents = 'none';
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 5000);
+    }
+    setInterval(spawnStar, 400);
+  </script>
+
+  <!-- Back Home Button -->
+  <button onclick="showPage('home')" style="margin-top:25px;">← Back Home</button>
+</div>
+
+
+
+</body>
+</html>
+

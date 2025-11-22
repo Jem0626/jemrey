@@ -1,0 +1,1314 @@
+:root {
+  --bg1:#ffe6f0;
+  --bg2:#fff5f9;
+  --accent1:#ff2d66;
+  --accent2:#a14bff;
+  --text:#5a2d82;
+  --heart-color:#ff2d66;
+  --sparkle-color:#ffd700;
+}
+
+/* GLOBAL */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
+  position: relative;
+}
+
+/* PAGE LAYOUT */
+.page{display:none;min-height:100vh;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:20px;}
+.page.active{display:flex;transition:opacity 0.8s ease; opacity:1;}
+
+/* BUTTONS */
+button{
+  cursor:pointer;
+  border:none;
+  border-radius:40px;
+  padding:12px 28px;
+  font-size:16px;
+  font-weight:600;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  color:#fff;
+  margin-top:20px;
+  box-shadow:0 5px 20px rgba(255,45,102,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+button:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 30px rgba(255,45,102,0.6);
+}
+
+/* FLOATING HEARTS */
+#hearts-container{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:1000;
+}
+.heart-floating{
+  position:absolute;
+  font-size:20px;
+  color:var(--heart-color);
+  animation:floatUp 4s linear forwards;
+  opacity:0.9;
+  filter:drop-shadow(0 0 5px rgba(255,0,100,0.7));
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1;}
+  100%{transform:translateY(-120vh) rotate(360deg) scale(1.5);opacity:0;}
+}
+
+/* TYPEWRITER */
+.typewriter{
+  font-size:28px;
+  font-weight:700;
+  color:var(--accent2);
+  white-space:nowrap;
+  overflow:hidden;
+  border-right:3px solid var(--accent2);
+  text-shadow: 0 0 5px #ff8caa, 0 0 10px #ff69b4;
+}
+
+/* MONTHSARY NUMBER */
+.monthsary-number{
+  margin:20px 0;
+  width:150px;
+  height:90px;
+  background:#fff;
+  border-radius:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent1);
+  font-size:50px;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(255,45,102,0.2), 0 0 20px rgba(161,75,255,0.2);
+}
+
+/* GIFT BOX */
+.box-container{
+  margin:30px auto;
+  width:220px;
+  height:220px;
+  perspective:1200px;
+  cursor:pointer;
+  position:relative;
+}
+.gift-box{
+  width:220px;
+  height:220px;
+  position:relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+.lid{
+  width:220px;
+  height:60px;
+  background:linear-gradient(145deg,#ff6381,#ff204e);
+  border-radius:12px 12px 0 0;
+  position:absolute;
+  top:0;
+  transform-origin:top center;
+  z-index:3;
+  box-shadow:0 8px 25px rgba(255,0,100,0.5);
+}
+.box-body{
+  width:220px;
+  height:160px;
+  background:linear-gradient(145deg,#ff204e,#b2003a);
+  border-radius:0 0 12px 12px;
+  position:absolute;
+  bottom:0;
+  box-shadow:0 12px 35px rgba(178,0,58,0.35), 0 0 15px rgba(255,255,255,0.1) inset;
+}
+.ribbon-horizontal, .ribbon-vertical{
+  position:absolute;
+  background:#ffd700;
+  z-index:4;
+  box-shadow:0 2px 8px rgba(255,215,0,0.5);
+}
+.ribbon-horizontal{height:20px;width:100%;top:70px;left:0;border-radius:10px;}
+.ribbon-vertical{width:20px;height:100%;left:100px;top:0;border-radius:10px;}
+.ribbon-bow{
+  position:absolute;
+  width:40px;height:40px;
+  background:#ffd700;
+  top:50px;left:90px;
+  border-radius:50%;
+  z-index:5;
+  box-shadow:0 5px 15px rgba(255,215,0,0.5);
+}
+
+/* BALLOONS */
+.balloons { 
+  position: absolute; 
+  bottom: 100%; /* start just above the box */
+  left: 50%; /* center horizontally relative to box */
+  width: 0; 
+  height: 0; 
+  pointer-events: none; 
+}
+.balloon {
+  position: absolute;
+  bottom: 0;
+  width: 25px;
+  height: 40px;
+  border-radius: 50%;
+  animation: floatBalloon linear infinite;
+  filter: drop-shadow(0 0 5px #ff69b4);
+}
+
+/* Balloon float with slight sway */
+@keyframes floatBalloon {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(15px) translateY(-100px) rotate(15deg); }
+  50% { transform: translateX(-10px) translateY(-200px) rotate(-10deg); }
+  75% { transform: translateX(10px) translateY(-300px) rotate(10deg); }
+  100% { transform: translateX(0) translateY(-400px) rotate(0deg); }
+}
+
+
+/* CONFETTI */
+.confetti-piece{
+  position:absolute;
+  width:10px;height:14px;
+  opacity:0.9;
+  border-radius:2px;
+  filter:drop-shadow(0 0 3px #fff);
+}
+
+/* SURPRISE CONTENT */
+.surprise-content{
+  text-align:center;
+  opacity:0;
+  transition:opacity 1s ease;
+  margin-top:20px;
+  z-index:6;
+}
+.surprise-content h2{
+  color:#ff1a4d;
+  font-size:2em;
+  text-shadow: 0 0 10px #ff8caa;
+}
+.surprise-content p{
+  font-size:1.2em;
+  color:#333;
+  margin:10px 0;
+}
+.bouquet{width:150px; margin-top:10px; filter: drop-shadow(0 0 10px rgba(255,105,180,0.5));}
+
+/* SCROLL PAPER */
+.scroll-wrapper{width:100%;max-width:900px;overflow:hidden;margin-top:20px;position:relative; z-index:5;}
+.scroll-paper{
+  background:#fff6db;
+  border:2px solid #cfb373;
+  border-radius:15px;
+  padding:40px 25px;
+  transform-origin:top;
+  transform:scaleY(0);
+  animation:unroll 1.3s ease-out forwards;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  line-height:1.8;
+  font-size:18px;
+  color:#3d2773;
+  text-align:justify;
+  position:relative;
+  z-index:2;
+  background-image: linear-gradient(to bottom right, #fff6db, #fff0c1);
+  border: 2px solid #f5d1a1;
+}
+@keyframes unroll{0%{transform:scaleY(0);}100%{transform:scaleY(1);}}
+
+/* BLOOMING ROSES */
+#roses-container{
+  position:absolute;
+  width:100%;height:100%;
+  top:0;left:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+.rose{
+  position:absolute;
+  width:40px;height:40px;
+  background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/44/Red_Rose_Petal.png');
+  background-size:cover;
+  background-repeat:no-repeat;
+  opacity:0.8;
+  border-radius:50%;
+  transform:scale(0);
+  animation-name:bloomFloat;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  filter: drop-shadow(0 0 5px rgba(255,0,100,0.5));
+}
+@keyframes bloomFloat{
+  0%{transform:scale(0) translate3d(0,0,0) rotate(0deg);opacity:0;}
+  20%{transform:scale(1) translate3d(0,-10px,0) rotate(15deg);opacity:0.9;}
+  50%{transform:scale(1.1) translate3d(20px,-80px,0) rotate(45deg);}
+  80%{transform:scale(1) translate3d(-20px,-150px,0) rotate(90deg);}
+  100%{transform:scale(0) translate3d(0,-200px,0) rotate(180deg);opacity:0;}
+}
+/* ROMANTIC ZOOM + FADE ANIMATION */
+@keyframes zoomFade {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 10px rgba(255,120,170,0.3));
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(255,90,150,0.4));
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(255,80,140,0.5));
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(255,90,150,0.4));
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 10px rgba(255,120,170,0.3));
+  }
+}
+
+/* APPLY TO PHOTOS */
+#photo-container img {
+  animation: zoomFade 4s ease-in-out infinite;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(255,0,110,0.25);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* HOVER EFFECT */
+#photo-container img:hover {
+  transform: scale(1.12);
+  box-shadow: 0 20px 35px rgba(255,0,120,0.35);
+}
+
+/* SMALLER PHOTO SIZE */
+#photo-container img {
+  width: 120px !important;   /* smaller width */
+  height: auto !important;   /* keeps natural ratio */
+}
+
+/* --------------------------------------- */
+/* 🌸 EXTRA ROMANTIC DESIGN (ADDED ONLY)  */
+/* --------------------------------------- */
+
+/* PAGE FADE & SLIDE TRANSITION */
+.page {
+  animation: fadeSlide 0.8s ease;
+}
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* TITLE GLOW EFFECT */
+h1, h2, h3 {
+  text-shadow: 
+    0 0 8px rgba(255, 120, 180, 0.6),
+    0 0 15px rgba(255, 80, 150, 0.5),
+    0 0 25px rgba(255, 40, 120, 0.4);
+}
+
+/* SECTION DIVIDER (CUTE HEART LINE) */
+.divider {
+  width: 100%;
+  margin: 25px 0;
+  text-align: center;
+  font-size: 22px;
+  color: var(--accent1);
+  letter-spacing: 8px;
+  text-shadow: 0 0 10px rgba(255, 0, 100, 0.3);
+}
+.divider::before,
+.divider::after {
+  content: "────────";
+  color: #ff99c8;
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+/* CARD-STYLE CONTENT BACKGROUNDS */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(255, 0, 120, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 200, 220, 0.6);
+  margin: 20px auto;
+  max-width: 90%;
+}
+
+/* BUTTON GLOW */
+button {
+  box-shadow: 0 5px 20px rgba(255, 45, 102, 0.6);
+}
+button:hover {
+  box-shadow: 0 8px 28px rgba(255, 45, 130, 0.8);
+}
+
+/* FLOATING SPARKLES */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--sparkle-color);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: sparkleFloat 3s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
+}
+@keyframes sparkleFloat {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.5); opacity: 1; }
+  100% { transform: translateY(-40px) scale(1); opacity: 0; }
+}
+
+/* PHOTO CONTAINER CENTERING & SPACING */
+#photo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+/* ADD A PINK FRAME TO PHOTOS */
+#photo-container img {
+  border: 4px solid rgba(255, 130, 160, 0.3);
+}
+
+/* SMOOTHER SCROLL-PAPER SHADOW */
+.scroll-paper {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.18),
+    0 0 20px rgba(255, 190, 140, 0.4) inset;
+}
+
+/* GIFT BOX HOVER SLIGHT BOUNCE */
+.box-container:hover .gift-box {
+  transform: scale(1.05);
+}
+
+/* ROSES RANDOM ROTATION VARIATION */
+.rose {
+  animation-duration: calc(6s + (random(5) * 1s));
+}
+
+/* --------------------------------------- */
+/* 🌟 EXTRA ADD-ONS — SUPER ROMANTIC LOOK */
+/* --------------------------------------- */
+
+/* GRADIENT BORDER GLOW ON SECTIONS */
+.card {
+  position: relative;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ff2d66, #a14bff, #ff9acb);
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.6;
+}
+
+/* FLOATING HEART EMOJI AROUND SCREEN */
+.floating-emoji {
+  position: fixed;
+  font-size: 22px;
+  animation: emojiFloat 6s infinite ease-in-out;
+  opacity: 0.9;
+  z-index: 999;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(255,80,150,0.5));
+}
+
+@keyframes emojiFloat {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-40px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+/* ADD SPARKLING BORDER AROUND PHOTOS */
+#photo-container img {
+  position: relative;
+}
+#photo-container img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 2px dashed rgba(255,150,180,0.5);
+  animation: sparkleBorder 3s linear infinite;
+}
+
+@keyframes sparkleBorder {
+  0% { opacity: 0.5; transform: rotate(0deg); }
+  50% { opacity: 1; }
+  100% { transform: rotate(360deg); }
+}
+
+/* PASTEL CLOUDS FLOATING BACKGROUND */
+.cloud {
+  position: absolute;
+  width: 180px;
+  height: 80px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 100px;
+  filter: blur(5px);
+  animation: cloudFloat 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes cloudFloat {
+  0% { transform: translateX(-200px); }
+  100% { transform: translateX(120vw); }
+}
+
+/* HEART-PULSE EFFECT FOR TITLES */
+h1:hover, h2:hover {
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.12); }
+  60% { transform: scale(0.95); }
+}
+
+/* BUTTON RAINBOW BORDER ON HOVER */
+button {
+  position: relative;
+  overflow: hidden;
+}
+button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  padding: 2px;
+  background: linear-gradient(135deg, #ff2d66, #ff7ac7, #a14bff);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+button:hover::after {
+  opacity: 1;
+}
+
+/* PAGE SOFT PINK VIGNETTE */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 60%, rgba(255,120,160,0.3));
+  z-index: 2;
+}
+
+/* FLOATING MINI HEART PARTICLES */
+.mini-heart {
+  position: absolute;
+  font-size: 14px;
+  color: #ff4d88;
+  animation: miniHeartFloat 3s infinite ease-in-out;
+  opacity: .85;
+}
+
+@keyframes miniHeartFloat {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-25px) scale(1.4); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+button::after {
+  position: absolute;
+  content: "";
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #ff2d66, #ff7ac7, #a14bff, #ff2d66);
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+button:hover::after {
+  opacity: 1;
+}
+
+/* ------------------------------------------- */
+/* ✨ GLOWING WAVES BACKGROUND (ROMANTIC AURA) */
+/* ------------------------------------------- */
+.glow-wave {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,140,180,0.4), transparent 70%);
+  filter: blur(80px);
+  animation: waveMove 18s infinite linear;
+  z-index: -2;
+  opacity: 0.6;
+}
+@keyframes waveMove {
+  0% { transform: translate(-20%, -20%) rotate(0deg); }
+  50% { transform: translate(20%, 10%) rotate(180deg); }
+  100% { transform: translate(-20%, -20%) rotate(360deg); }
+}
+
+/* ------------------------------------------- */
+/* ❤️ MICRO HEART PARTICLES (SUBTLE FLOAT)     */
+/* ------------------------------------------- */
+.tiny-heart {
+  position: fixed;
+  font-size: 14px;
+  color: #ff2d66;
+  opacity: 0.7;
+  animation: tinyFloat 5s infinite ease-in-out;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(255,70,130,0.7));
+}
+@keyframes tinyFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-25px) scale(1.3); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.8; }
+}
+
+/* ------------------------------------------- */
+/* 💖 PHOTO SHINE SWIPE EFFECT                 */
+/* ------------------------------------------- */
+#photo-container img {
+  position: relative;
+  overflow: hidden;
+}
+#photo-container img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    75deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shineSwipe 3.5s infinite ease-in-out;
+}
+@keyframes shineSwipe {
+  0% { left: -150%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* ------------------------------------------- */
+/* 🎀 FLOATING RIBBON STRIPS                   */
+/* ------------------------------------------- */
+.ribbon-strip {
+  position: fixed;
+  width: 6px;
+  height: 80px;
+  background: linear-gradient(180deg, #ff2d66, #ffa3c2);
+  border-radius: 3px;
+  opacity: 0.7;
+  animation: ribbonFall 6s linear infinite;
+  z-index: 998;
+}
+@keyframes ribbonFall {
+  0% { transform: translateY(-150px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(180deg); }
+}
+
+/* ------------------------------------------- */
+/* 🌹 LOVE VIGNETTE (ROMANTIC FOCUS GLOW)      */
+/* ------------------------------------------- */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 40%, rgba(255,0,120,0.25));
+  z-index: 998;
+}
+
+/* ------------------------------------------- */
+/* 🌟 SMOOTH FADE-IN FOR ALL ELEMENTS          */
+/* ------------------------------------------- */
+.fade-in {
+  opacity: 0;
+  animation: fadeInElement 1s forwards ease-out;
+}
+@keyframes fadeInElement {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------------------- */
+/* 💞 HEART TRAIL WHEN CLICKING                */
+/* ------------------------------------------- */
+.click-heart {
+  position: fixed;
+  font-size: 18px;
+  color: #ff2d66;
+  pointer-events: none;
+  animation: clickPop 0.8s forwards ease-out;
+  filter: drop-shadow(0 0 8px rgba(255,50,120,0.9));
+}
+@keyframes clickPop {
+  0% { transform: scale(0) translateY(0); opacity: 1; }
+  60% { transform: scale(1.4) translateY(-20px); opacity: 1; }
+  100% { transform: scale(0.5) translateY(-40px); opacity: 0; }
+}
+
+/* ------------------------------------------- */
+/* 🌈 EXTRA SOFT PASTEL BACKDROP               */
+/* ------------------------------------------- */
+.pastel-bg {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255,200,220,0.2),
+    rgba(255,150,200,0.15),
+    rgba(200,150,255,0.15)
+  );
+  z-index: -3;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  padding: 2px;
+  background: linear-gradient(135deg, #ff2d66, #ff7ac7, #a14bff);
+  -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+button:hover::after {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------- */
+/* 🌈 DREAMY BACKGROUND AURORA EFFECT                        */
+/* --------------------------------------------------------- */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 150, 200, 0.4), transparent),
+              radial-gradient(circle at 80% 70%, rgba(180, 130, 255, 0.4), transparent),
+              radial-gradient(circle at 50% 50%, rgba(255, 200, 230, 0.3), transparent);
+  filter: blur(50px);
+  z-index: -2;
+  animation: auroraMove 12s ease-in-out infinite;
+}
+@keyframes auroraMove {
+  0%   { transform: translateX(0) translateY(0); }
+  50%  { transform: translateX(40px) translateY(-30px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* --------------------------------------------------------- */
+/* 🌟 EXTRA FLOATING HEART TRAIL WHEN MOUSE MOVES           */
+/* --------------------------------------------------------- */
+.mouse-heart {
+  position: fixed;
+  color: var(--heart-color);
+  font-size: 16px;
+  pointer-events: none;
+  animation: mousePop 0.8s ease-out forwards;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 5px rgba(255,0,120,0.5));
+}
+@keyframes mousePop {
+  0%   { transform: scale(0.5) translateY(0); opacity: 1; }
+  100% { transform: scale(1.4) translateY(-40px); opacity: 0; }
+}
+
+/* --------------------------------------------------------- */
+/* 💖 PHOTO CAROUSEL STYLE (IF YOU ADD SLIDER LATER)        */
+/* --------------------------------------------------------- */
+.photo-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 15px 0;
+  scroll-snap-type: x mandatory;
+}
+.photo-carousel img {
+  scroll-snap-align: center;
+  width: 140px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(255,0,80,0.25);
+  animation: zoomFade 4s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------- */
+/* 🌸 FLOATING PETALS BACKGROUND                             */
+/* --------------------------------------------------------- */
+.petal {
+  position: fixed;
+  top: -20px;
+  width: 25px;
+  height: 25px;
+  background-image: url('https://pngimg.com/uploads/rose_petals/rose_petals_PNG3562.png');
+  background-size: cover;
+  opacity: 0.8;
+  animation: fallPetal linear infinite;
+  z-index: 1;
+}
+@keyframes fallPetal {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  50% { transform: translateY(50vh) translateX(30px) rotate(90deg); }
+  100% { transform: translateY(100vh) translateX(-20px) rotate(180deg); }
+}
+
+/* --------------------------------------------------------- */
+/* 💞 HEARTBEAT SECTION FOR SPECIAL TITLES                   */
+/* --------------------------------------------------------- */
+.love-title {
+  font-size: 2.5em;
+  color: var(--accent1);
+  animation: pulseGlow 2s infinite;
+  text-shadow: 0 0 15px rgba(255,80,150,0.8);
+}
+@keyframes pulseGlow {
+  0%   { transform: scale(1); opacity: 0.8; }
+  50%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* --------------------------------------------------------- */
+/* ✨ GOLDEN SHIMMER EFFECT ON IMPORTANT TEXT                */
+/* --------------------------------------------------------- */
+.shimmer {
+  background: linear-gradient(90deg,
+    #ffb7d5 0%, #ff7ac7 50%, #ffd9e8 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmerMove 3s linear infinite;
+}
+@keyframes shimmerMove {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* --------------------------------------------------------- */
+/* 💗 HEART BOUNCING LOADING ANIMATION                       */
+/* --------------------------------------------------------- */
+.loading-heart {
+  font-size: 35px;
+  color: var(--accent1);
+  animation: bounceHeart 1s infinite ease-in-out;
+}
+@keyframes bounceHeart {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* --------------------------------------------------------- */
+/* 🌟 BLUR-IN ANIMATION FOR TEXT OR PHOTOS                   */
+/* --------------------------------------------------------- */
+.blur-in {
+  opacity: 0;
+  filter: blur(10px);
+  animation: blurAppear 1s ease forwards;
+}
+@keyframes blurAppear {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* --------------------------------------------------------- */
+/* 💘 SPECIAL FRAME FOR YOUR GF PHOTOS                       */
+/* --------------------------------------------------------- */
+.romantic-frame {
+  padding: 12px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, rgba(255,120,150,0.4), rgba(180,100,255,0.4));
+  box-shadow: 0 0 25px rgba(255,0,120,0.4);
+}
+
+/* --------------------------------------------------------- */
+/* 🌙 SOFT NIGHT MODE (Optional Toggle)                      */
+/* --------------------------------------------------------- */
+.night-mode {
+  background: #2b1a35 !important;
+  color: #ffe6f5 !important;
+}
+.night-mode .card {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* --------------------------------------------------------- */
+/* END ADD-ONS — YOU CAN ADD MORE IF YOU WANT                */
+/* --------------------------------------------------------- */
+
+/* FLOATING EXTRA EMOJIS */
+.floating-extra-emoji {
+  position: fixed;
+  font-size: 24px;
+  animation: floatUp 5s linear forwards;
+  z-index: 999999;
+  pointer-events: none;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.6); opacity: 0; }
+}
+
+/* FLOATING CLOUDS */
+.cloud {
+  position: fixed;
+  width: 220px;
+  height: 90px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 100px;
+  filter: blur(6px);
+  animation: cloudMove 40s linear infinite;
+  z-index: 0;
+}
+@keyframes cloudMove {
+  0% { transform: translateX(-200px); }
+  100% { transform: translateX(120vw); }
+}
+
+/* CLICK HEART EFFECT */
+.click-heart {
+  position: fixed;
+  font-size: 22px;
+  color: #ff2d66;
+  transform: translate(-50%, -50%);
+  animation: clickHeart 0.9s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes clickHeart {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -130%) scale(1.6); }
+}
+
+/* SOFT PINK SCREEN GLOW */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 50%, rgba(255,150,170,0.3));
+  z-index: 2;
+}
+
+.sparkle {
+  position: relative;
+  display: inline-block;
+}
+.sparkle::after {
+  content: "✨";
+  position: absolute;
+  right: -18px;
+  top: -10px;
+  animation: sparkleBlink 1.2s infinite ease-in-out;
+}
+@keyframes sparkleBlink {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+.petal {
+  position: fixed;
+  top: -20px;
+  font-size: 20px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fallPetal linear infinite;
+  opacity: 0.8;
+}
+@keyframes fallPetal {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(120vh) rotate(300deg); }
+}
+
+.butterfly {
+  position: fixed;
+  width: 40px;
+  animation: butterflyFloat 8s infinite ease-in-out;
+  z-index: 9999;
+  pointer-events: none;
+}
+@keyframes butterflyFloat {
+  0% { transform: translateY(0) translateX(0) rotate(0); }
+  50% { transform: translateY(-40px) translateX(40px) rotate(20deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0); }
+}
+
+button {
+  background: linear-gradient(135deg, #ff7abf, #ff2d66);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  font-size: 17px;
+  box-shadow: 0 4px 12px rgba(255, 80, 150, 0.4);
+  transition: 0.3s ease;
+}
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 20px rgba(255, 80, 150, 0.6);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* DARK MODE THEME */
+body.dark {
+  background: linear-gradient(180deg, #1a0014, #330022, #1a0014);
+  color: #ffd6ec;
+}
+
+body.dark .page {
+  color: #ffd6ec;
+}
+
+body.dark button {
+  background: linear-gradient(135deg, #ff5fa1, #ff2d66);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 80, 150, 0.4);
+}
+
+body.dark .scroll-paper {
+  background: rgba(255, 225, 240, 0.1);
+  border: 2px solid rgba(255, 150, 200, 0.6);
+  color: #ffe9f6;
+}
+
+body.dark h1, 
+body.dark h2,
+body.dark p {
+  color: #ffd6ec;
+}
+
+.cursor-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 18px;
+  animation: heartFade 1s ease-out forwards;
+  z-index: 99999;
+}
+
+@keyframes heartFade {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-20px) scale(1.8); opacity: 0; }
+}
+
+.glitter {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #fff, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glitterFade 0.6s ease-out forwards;
+  z-index: 99999;
+}
+
+@keyframes glitterFade {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(3); }
+}
+
+.neon-glow {
+  border: 3px solid #ff2d66;
+  border-radius: 20px;
+  box-shadow: 
+      0 0 10px #ff2d66,
+      0 0 20px #ff5fa1,
+      0 0 30px #ff2d66,
+      inset 0 0 10px rgba(255, 100, 160, 0.4);
+  transition: 0.3s ease;
+}
+.neon-glow:hover {
+  box-shadow:
+      0 0 15px #ff2d66,
+      0 0 30px #ff5fa1,
+      0 0 45px #ff2d66,
+      inset 0 0 15px rgba(255, 100, 160, 0.6);
+}
+
+.sparkle-burst {
+  position: fixed;
+  font-size: 40px;
+  animation: burst 1.2s ease-out forwards;
+  pointer-events: none;
+  z-index: 999999;
+}
+
+@keyframes burst {
+  0% { transform: scale(0.2); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, white, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: fw 1s ease-out forwards;
+  z-index: 999999;
+}
+
+@keyframes fw {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) scale(0.4); opacity: 0; }
+}
+
+.dove {
+  position: fixed;
+  width: 50px;
+  opacity: 0.9;
+  animation: doveFly 12s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes doveFly {
+  0% { transform: translateX(-10vw) translateY(0) scale(1); }
+  50% { transform: translateX(50vw) translateY(-20vh) scale(1.2); }
+  100% { transform: translateX(110vw) translateY(0) scale(1); }
+}
+
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff2d66;
+  padding: 12px 18px;
+  color: white;
+  border-radius: 50px;
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(255, 0, 100, 0.5);
+  cursor: pointer;
+  z-index: 100000;
+  transition: 0.3s;
+}
+
+#musicBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 120, 0.7);
+}
+
+.no-effects {
+  padding: 40px;
+  text-align: center;
+}
+
+.clean-message {
+  font-size: 18px;
+  color: #444;
+  max-width: 500px;
+  margin: 20px auto;
+  line-height: 1.6;
+}
+
+.clean-img {
+  margin-top: 20px;
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.page-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #222;
+  font-weight: 700;
+}
+
+/* TRAIN TRACK */
+.train-track {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+/* TRAIN WRAPPER – moves the whole train */
+.train {
+  position: absolute;
+  display: flex;
+  gap: 15px;
+  bottom: 10px;
+  left: -500px;
+  animation: trainMove 12s linear forwards;
+}
+
+/* ENGINE */
+.engine, .wagon {
+  width: 120px;
+  height: 70px;
+  background: #ff6b9d;
+  border-radius: 10px;
+  border: 3px solid #fff;
+  position: relative;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Engine window */
+.engine .window {
+  width: 40px;
+  height: 35px;
+  background: #dff6ff;
+  border-radius: 5px;
+  border: 2px solid white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* Engine chimney */
+.engine .chimney {
+  width: 25px;
+  height: 40px;
+  background: #ff3e7f;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: -40px;
+  right: 20px;
+}
+
+/* Smoke puffs */
+.engine .chimney::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  top: -20px;
+  left: -2px;
+  animation: smoke 1.2s infinite ease-out;
+}
+
+/* Wheels */
+.engine::after, .wagon::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
+  width: 90px;
+  height: 25px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+}
+
+.engine::after div, .wagon::after div {
+  width: 22px;
+  height: 22px;
+  background: #333;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+
+/* Create wheels elements */
+.engine::after {
+  display: flex;
+}
+.engine::after {
+  content: "";
+  display: flex;
+}
+.engine::after {
+  content: "";
+}
+
+/* Train movement */
+@keyframes trainMove {
+  0% { left: -400px; }
+  50% { left: 50%; transform: translateX(-50%); }
+  100% { left: 110%; }
+}
+
+/* Smoke animation */
+@keyframes smoke {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(1.6); }
+}
+
+/* ZOOM MODAL STYLE */
+.photo-zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.photo-zoom-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.photo-zoom-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(255,0,120,0.5);
+  transform: scale(0);
+  transition: transform 0.4s ease;
+}
+
+.photo-zoom-overlay.active img {
+  transform: scale(1);
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
