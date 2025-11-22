@@ -455,6 +455,98 @@ window.addEventListener('resize', () => {
 </style>
 
 <script src="script.js"></script>
+
+<script>
+  const photos = document.querySelectorAll('#photo-container img');
+
+  // Create overlay div
+  const overlay = document.createElement('div');
+  overlay.classList.add('photo-zoom-overlay');
+  const overlayImg = document.createElement('img');
+  overlay.appendChild(overlayImg);
+  document.body.appendChild(overlay);
+
+  // Click photo to zoom
+  photos.forEach(photo => {
+    photo.addEventListener('click', () => {
+      overlayImg.src = photo.src;
+      overlay.classList.add('active');
+    });
+  });
+
+  // Click overlay to close
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+</script>
+
+<script>
+  // Get all pages and buttons
+  const pages = document.querySelectorAll('.page');
+  
+  // Find all buttons inside pages
+  const buttons = document.querySelectorAll('.next-button');
+
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      // Hide current page
+      pages[index].classList.remove('active');
+
+      // Show next page if exists
+      if(pages[index + 1]) {
+        pages[index + 1].classList.add('active');
+      }
+    });
+  });
+</script>
+<!-- NEW BUTTON TO ACCESS DREAMS PAGE -->
+<button id="dreamsBtn" onclick="showPage('dreams')">🌈 Our Dreams →</button>
+
+<!-- ✨ NEW PAGE OUR DREAMS -->
+<div id="dreams" class="page" style="padding:40px; background:linear-gradient(135deg,#ff9acb,#da0d69); color:#5a2d82; text-align:center; overflow:hidden;">
+  
+  <h2 class="typewriter">🌟 Our Dreams Together 🌟</h2>
+
+  <div style="max-width:800px; margin:20px auto; font-size:18px; line-height:1.8; 
+              background:rgba(255,255,255,0.3); border-radius:15px; padding:25px; 
+              backdrop-filter:blur(8px); box-shadow:0 10px 25px rgba(255,0,120,0.2); 
+              text-align:justify;">
+    <p>My love, I dream of a life where we grow together every single day. A home filled with laughter, love, and memories that will last forever. 🌸</p>
+    <p>Traveling together, discovering new places, and making every moment count. 💕</p>
+    <p>Supporting each other’s passions, chasing goals hand in hand, and building a world that belongs to us. ✨</p>
+    <p>And in all of this, I hope our love continues to shine brighter than ever, through every challenge and joy that life brings. 💖</p>
+    <p>I dream of quiet mornings waking up beside you, feeling your warmth and knowing that no matter what happens, we face it together. 🌅</p>
+    <p>Of late night talks where we share our fears, our dreams, and even our silly little thoughts, knowing that you are my safe place, my home, my everything. 🕊️</p>
+    <p>I dream of holding your hand as we grow old, our hair turning gray, but our hearts forever young. I want to look into your eyes and see the same love we felt from day one, shining brighter with every year. 💑</p>
+    <p>Even when life gets hard, and the world feels heavy, I want you to know that I will always be your shoulder to lean on, your calm in the storm, and the person who never lets you feel alone. 🌈</p>
+    <p>All I want is to create memories that make us laugh until our stomachs hurt, love that makes us cry tears of joy, and moments so beautiful we will carry them in our hearts forever. 💕</p>
+    <p>My love, this dream isn’t just about a perfect life. It’s about **us**, being imperfectly perfect together, loving each other through mistakes, embracing every flaw, and building a forever that no one else could ever take from us. 💖</p>
+    <p>And if there’s one thing I want you to always remember, it’s this no matter what tomorrow brings, my heart has already chosen you. Today, tomorrow, and for every day after that, it will always be you. 🌸</p>
+  </div>
+
+  <!-- Floating Stars Animation -->
+  <script>
+    function spawnStar() {
+      const star = document.createElement('div');
+      star.textContent = '✨';
+      star.style.position = 'absolute';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.fontSize = (10 + Math.random() * 20) + 'px';
+      star.style.opacity = Math.random();
+      star.style.pointerEvents = 'none';
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 5000);
+    }
+    setInterval(spawnStar, 400);
+  </script>
+
+  <!-- Back Home Button -->
+  <button onclick="showPage('home')" style="margin-top:25px;">← Back Home</button>
+</div>
+
+
+
 </body>
 </html>
 
